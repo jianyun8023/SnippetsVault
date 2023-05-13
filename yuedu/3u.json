@@ -1,0 +1,57 @@
+{
+    "bookSourceName": "三优小说网",
+    "bookSourceType": 0,
+    "bookSourceUrl": "https://www.3uxiaoshuo.com/",
+    "customOrder": 0,
+    "enabled": true,
+    "enabledCookieJar": true,
+    "enabledExplore": true,
+    "enabledReview": false,
+    "lastUpdateTime": 1683951492013,
+    "respondTime": 180000,
+    "ruleBookInfo": {
+        "author": "@css: div.container  > div.item > .itemtxt p:nth-child(3) > a@text",
+        "coverUrl": "@css:div.container  >div.item img@src",
+        "intro": "@css:div.container > div.des:nth-child(2)@text",
+        "kind": "div.container  > div.item > .itemtxt p:nth-child(2) > span:nth-child(2)@text",
+        "lastChapter": "@css:div.container  > div.item >div.itemtxt > ul > li:nth-child(1) > a@text",
+        "name": "@css:div.container  > div.item > .itemtxt h3 > a@text",
+        "wordCount": "@css:div.container  > div.item > .itemtxt h3 > i@text"
+    },
+    "ruleContent": {
+        "content": "@css: div.con@html##请.*?搜.*?索.*?无.*?弹.*?窗。?",
+        "replaceRegex": ""
+    },
+    "ruleExplore": {
+        "bookList": "@css:div.item",
+        "name": "@css:div.itemtxt > h3@text",
+        "author": "@css:div.itemtxt > p:nth-child(3) > a@text",
+        "kind": "@css:div.itemtxt p:nth-child(2) > span:nth-child(2)@text",
+        "wordCount": "@css:div.itemtxt p:nth-child(2) > span:nth-child(2)@text",
+        "lastChapter": "@css:div.itemtxt > ul > li:nth-child(1) > a@text",
+        "coverUrl": "@css:div.item   img@src",
+        "bookUrl": "@css:div.itemtxt > h3 > a@href"
+    },
+    "ruleReview": {},
+    "ruleSearch": {
+        "author": "@css:div.itemtxt > p:nth-child(3) > a@text",
+        "bookList": "@css:div.item",
+        "bookUrl": "@css:div.itemtxt > h3 > a@href",
+        "checkKeyWord": "深空彼岸",
+        "coverUrl": " @css:div.item   img@src",
+        "name": "@css:div.itemtxt > h3@text",
+        "lastChapter": "@css:div.itemtxt > ul > li:nth-child(1) > a@text",
+        "kind": "@css:div.itemtxt p:nth-child(2) > span:nth-child(2)@text",
+        "wordCount": "@css:div.itemtxt p:nth-child(2) > span:nth-child(2)@text"
+    },
+    "ruleToc": {
+        "chapterList": "@css:div#list  li a",
+        "chapterName": "text",
+        "chapterUrl": "href"
+    },
+    "searchUrl": "/tag/?key={{key}}",
+    "weight": 1,
+    "exploreUrl": "热门小说::https://www.3uxiaoshuo.com/xiaoshuo/2-{{page}}.html\n最新更新::https://www.3uxiaoshuo.com/xiaoshuo/1-{{page}}.html",
+    "bookSourceComment": "优质小说站",
+    "bookSourceGroup": "优质"
+}
