@@ -1,0 +1,57 @@
+#!name=腾讯系清理
+#!desc=🧹清理腾讯系应用
+#!system=ios
+[General]
+
+[Rule]
+
+## QQ
+DOMAIN-SUFFIX,act.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,adsfile.qq.com,REJECT-TINYGIF
+#DOMAIN-SUFFIX,beacon.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,btrace.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,bugly.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,e.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,gdt.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,ltsdl.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,monitor.uu.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,mtrace.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,pgdt.gtimg.cn,REJECT-TINYGIF
+DOMAIN-SUFFIX,pingjs.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,pingma.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,pingtcss.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,report.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,routertips.video.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,tajs.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,tcss.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,up-hl.3g.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,fusion.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,sdkconfig.video.qq.com,REJECT-TINYGIF
+#DOMAIN-SUFFIX,iacc.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,news.l.qq.com,REJECT-TINYGIF
+DOMAIN-SUFFIX,yun-hl.3g.qq.com,REJECT-TINYGIF
+#微信小程序开屏
+URL-REGEX,http(s)?://wxsnsdythumb.wxs.qq.com/,REJECT-TINYGIF
+
+
+
+[URL Rewrite]
+
+
+[Script]
+
+
+# > 微信公众号
+#http-response ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
+
+# > 微信
+http-request ^https://mp\.weixin\.qq\.com/mp/getappmsgad script-path=https://raw.githubusercontent.com/scomper/Surge/master/Scripts/WeChat.js
+
+WeChat.js = script-path=https://Choler.github.io/Surge/Script/WeChat.js,type=http-request,pattern=^https://mp\.weixin\.qq\.com/mp/getappmsgad
+
+解除微信链接限制 = type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/asset/UnblockURLinWeChat.js
+
+解除微信链接限制 = type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/asset/UnblockURLinWeChat.js,argument=useCache=true&forceRedirect=false
+
+[MITM]
+hostname = %APPEND% mp.weixin.qq.com,security.wechat.com, weixin110.qq.com
