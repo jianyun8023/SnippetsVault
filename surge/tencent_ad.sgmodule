@@ -31,7 +31,8 @@ DOMAIN-SUFFIX,news.l.qq.com,REJECT-TINYGIF
 DOMAIN-SUFFIX,yun-hl.3g.qq.com,REJECT-TINYGIF
 #微信小程序开屏
 URL-REGEX,http(s)?://wxsnsdythumb.wxs.qq.com/,REJECT-TINYGIF
-
+#微信公众号文章广告
+URL-REGEX,^https:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad,REJECT
 
 
 [URL Rewrite]
@@ -43,12 +44,12 @@ URL-REGEX,http(s)?://wxsnsdythumb.wxs.qq.com/,REJECT-TINYGIF
 #http-response ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
 
 # > 微信
-http-request ^https://mp\.weixin\.qq\.com/mp/getappmsgad script-path=https://raw.githubusercontent.com/scomper/Surge/master/Scripts/WeChat.js
+#http-request ^https://mp\.weixin\.qq\.com/mp/getappmsgad script-path=https://raw.githubusercontent.com/scomper/Surge/master/Scripts/WeChat.js
 
-tbopener.js = type=http-response,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixin110.js
+tbopener.js = type=http-response,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixin110.js,requires-body=true
 
 腾讯文档链接重定向 = type=http-response,pattern=^https\:\/\/docs.qq.com\/scenario\/link.html\?url=,script-path=https://github.com/jianyun8023/SnippetsVault/raw/main/surge/script/qqdocs.js,requires-body=false
 
 
 [MITM]
-hostname = %APPEND% mp.weixin.qq.com,security.wechat.com,docs.qq.com, weixin110.qq.com
+hostname = %APPEND% wxsnsdythumb.wxs.qq.com,mp.weixin.qq.com,security.wechat.com,docs.qq.com, weixin110.qq.com
