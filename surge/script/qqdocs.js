@@ -1,9 +1,12 @@
 // 腾讯文档链接重定向 = type=http-request,pattern=^https\:\/\/docs.qq.com\/scenario\/link.html\?url=,script-path=https://github.com/jianyun8023/SnippetsVault/raw/main/surge/script/qqdocs.js,requires-body=false
 
-
 function getQueryString(url, name) {
-    const searchParams = new URLSearchParams(url.split('?')[1]);
-    return searchParams.get(name);
+    const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
+    const match = url.match(reg);
+    if (match) {
+        return decodeURIComponent(match[2]);
+    }
+    return null;
 }
 
 // 提取链接中的url参数
