@@ -1,20 +1,25 @@
 // 腾讯文档链接重定向 = type=http-request,pattern=^https\:\/\/docs.qq.com\/scenario\/link.html\?url=,script-path=https://github.com/jianyun8023/SnippetsVault/raw/main/surge/script/qqdocs.js,requires-body=false
 
-function getQueryString(url, name) {
-    const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
-    const match = url.match(reg);
-    if (match) {
-        return decodeURIComponent(match[2]);
+
+const regex = /link\.html\?url=(.*?)&/gm;
+
+
+const url = $request.url;
+let m;
+let urlParam = "";
+while ((m = regex.exec(url)) !== null) {
+    // 这对于避免零宽度匹配的无限循环是必要的
+    if (m.index === regex.lastIndex) {
+        regex.lastIndex++;
     }
-    return null;
+    urlParam = decodeURIComponent(m[1]);
 }
 
-// 提取链接中的url参数
-const url = decodeURIComponent($request.url);
-
-const urlParam = getQueryString(url, 'url');
-
 console.log("url 参数" + urlParam);
+
+if (urlParam === "") {
+    $done();
+}
 
 // 构造重定向响应
 const response = {
