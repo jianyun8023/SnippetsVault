@@ -53,5 +53,8 @@ WeChat.js = script-path=https://Choler.github.io/Surge/Script/WeChat.js,type=htt
 
 解除微信链接限制 = type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/asset/UnblockURLinWeChat.js,argument=useCache=true&forceRedirect=false
 
+腾讯文档链接重定向 = type=http-request,pattern=^https\:\/\/docs.qq.com\/scenario\/link.html\?url=,script-path=https://github.com/jianyun8023/SnippetsVault/raw/main/surge/script/qqdocs.js,requires-body=false
+
+
 [MITM]
-hostname = %APPEND% mp.weixin.qq.com,security.wechat.com, weixin110.qq.com
+hostname = %APPEND% mp.weixin.qq.com,security.wechat.com,docs.qq.com, weixin110.qq.com
