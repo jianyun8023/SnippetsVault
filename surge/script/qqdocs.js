@@ -28,7 +28,7 @@ const response = {
         Location: urlParam
     }
 };
-
+console.log(response);
 // 返回重定向响应
 $done(response);
 
