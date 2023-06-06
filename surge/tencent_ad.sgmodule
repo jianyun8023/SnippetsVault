@@ -1,6 +1,5 @@
 #!name=腾讯系清理
 #!desc=🧹清理腾讯系应用
-#!system=ios
 [General]
 
 [Rule]
