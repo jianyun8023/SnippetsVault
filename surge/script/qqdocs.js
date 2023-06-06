@@ -2,7 +2,7 @@
 
 
 // 提取链接中的url参数
-const urlParam = decodeURIComponent($request.query.url);
+const urlParam = decodeURIComponent($request.url);
 
 console.log("url 参数" + urlParam);
 
