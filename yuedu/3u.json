@@ -19,7 +19,8 @@
         "wordCount": "@css:div.container  > div.item > .itemtxt h3 > i@text"
     },
     "ruleContent": {
-        "content": "@css: div.con@html##请.*?搜.*?索.*?无.*?弹.*?窗。?",
+        "content": "@css: div.con@html##请.*?搜.*?索.*?无.*?弹.*?窗。?|.rdo.|.hellip.|.ldo.|.amp|三优小说##",
+        "nextContentUrl": "@css:a[href~=(-|_)\\d+]:contains(下一页)@href",
         "replaceRegex": ""
     },
     "ruleExplore": {
