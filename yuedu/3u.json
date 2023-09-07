@@ -46,6 +46,7 @@
         "wordCount": "@css:div.itemtxt p:nth-child(2) > span:nth-child(2)@text"
     },
     "ruleToc": {
+        "nextTocUrl": "@css:#pages > a:contains(下一页)@href",
         "chapterList": "@css:div#list  li a",
         "chapterName": "text",
         "chapterUrl": "href"
