@@ -1,4 +1,5 @@
-{
+[
+    {
     "bookSourceName": "三优小说网",
     "bookSourceType": 0,
     "bookSourceUrl": "https://www.3uxiaoshuo.com/",
@@ -57,3 +58,4 @@
     "bookSourceComment": "优质小说站",
     "bookSourceGroup": "优质"
 }
+]
