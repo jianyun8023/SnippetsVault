@@ -1,0 +1,62 @@
+#!name=高德地图
+#!desc=缺德地图有治了,from RuCu6 kokoryh
+[General]
+
+[Rule]
+
+
+[URL Rewrite]
+
+# 导航详情页,路线规划,地点详情页,搜索详情页,导航结束页
+^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(car-end|route-plan)\? _ REJECT
+^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? _ REJECT
+^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/tips_adv\? _ REJECT
+^https:\/\/oss\.amap\.com\/ws\/banner\/lists\/\? _ REJECT
+
+# 首页,推广卡片,红点角标,右上角动图,搜索框热词,左下角天气,消息横幅
+^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/main-page-(assets|location)\? _ REJECT
+^https:\/\/m5\.amap\.com\/ws\/(mapapi\/hint_text\/offline_data|message\/notice\/list|shield\/search\/new_hotword)\? _ REJECT
+^https:\/\/m5\.amap\.com\/ws\/shield\/scene\/recommend\? _ REJECT
+^https:\/\/m5\.amap\.com\/ws\/valueadded\/weather\/v2\? _ REJECT
+^https:\/\/sns\.amap\.com\/ws\/msgbox\/pull_mp\? _ REJECT
+
+
+# 打车页,红点角标,弹窗,天气图标,推广卡片
+^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(car\/order\/content_info|order\/car\/king_toolbox_car_bubble)\? _ REJECT
+^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(order_web\/friendly_information|tips\/onscene_visual_optimization)\? _ REJECT
+
+
+[Script]
+
+其他 = type=http-response,pattern=^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/header.js,requires-body=false
+
+
+# 导航详情页,路线规划,地点详情页,搜索详情页,导航结束页
+
+路线规划 = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/perception\/drive\/routePlan\?,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js,requires-body=true
+
+搜索详情页 = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search\/(common\/coupon\/info|poi\/detail)\?,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js,requires-body=true
+搜索详情页2 = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search_business\/process\/marketingOperationStructured\?,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js,requires-body=true
+搜索详情页3 = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/(homepage|mps|search\/sp|sug|tips_operation_location)\?,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js,requires-body=true
+
+
+# 首页,推广卡片,红点角标,右上角动图,搜索框热词,左下角天气,消息横幅
+faas = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(card-service-plan-home|main-page)\?,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js,requires-body=true
+shield = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable\/1\?,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js,requires-body=true
+
+# 我的页面,推广卡片
+我的页面 = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaasv3\?,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js,requires-body=true
+
+# 附近页
+附近页 = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search\/nearbyrec_smart\?,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js,requires-body=true
+
+# 开屏广告
+开屏广告 = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\?,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js,requires-body=true
+
+# 打车页,红点角标,弹窗,天气图标,推广卡片
+天气图标 = type=http-response,pattern=^https:\/\/m5-zb\.amap\.com\/ws\/promotion-web\/resource(\/home)?\?,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js,requires-body=true
+推广卡片 = type=http-response,pattern=^https:\/\/m5-zb\.amap\.com\/ws\/sharedtrip\/taxi\/order_detail_car_tips\?,script-path=https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js,requires-body=true
+
+
+[MITM]
+hostname = %APPEND% m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com
