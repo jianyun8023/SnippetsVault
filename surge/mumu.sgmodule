@@ -3,16 +3,17 @@
 
 
 
-[URL Rewrite]
+[Rule]
 # 禁用上报数据
-^https:\/\/sentry\.netease\.com\/api\/\d+\/envelope _ REJECT
-^https:\/\/shence-api\.mumu\.163\.com\/sa  _ REJECT
+
+URL-REGEX,^https:\/\/sentry\.netease\.com\/api\/\d+\/envelope,REJECT
+URL-REGEX,^https:\/\/shence-api\.mumu\.163\.com\/sa,REJECT
 
 [Script]
 
 用户信息 = type=http-response,pattern=^https:\/\/api-pro\.mumu\.163\.com\/api\/v1\/user\/info$,script-path=https://raw.githubusercontent.com/jianyun8023/SnippetsVault/main/surge/script/mumu.js,requires-body=true
 当前试用 = type=http-response,pattern=^https:\/\/api-pro\.mumu\.163\.com\/api\/v1\/device\/current\/trial$,script-path=https://raw.githubusercontent.com/jianyun8023/SnippetsVault/main/surge/script/mumu.js,requires-body=true
-
+重写活动页 = type=http-response,pattern=^https:\/\/mumu\.nie\.netease\.com\/api\/mac\/pro\/(force|remind),script-path=https://raw.githubusercontent.com/jianyun8023/SnippetsVault/main/surge/script/mumu.js,requires-body=true
 
 [MITM]
-hostname = %APPEND% api-pro.mumu.163.com,sentry.netease.com,shence-api.mumu.163.com
+hostname = %APPEND% api-pro.mumu.163.com,sentry.netease.com,shence-api.mumu.163.com,mumu.nie.netease.com

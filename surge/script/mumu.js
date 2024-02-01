@@ -14,8 +14,11 @@ if (url.includes("/api/v1/user/info")) {
     obj.data.member_expired_at = end_at
 } else if (url.includes("/api/v1/device/current/trial")) {
     obj.data.trial_end_at = end_at
-}
-
+} else if (url.includes("/api/mac/pro/appcast/force")) {
+    obj.items = []
+} else if (url.includes("/api/mac/pro/appcast/remind")) {
+    obj.items = []
+} 
 
 
 if (isQuanX) {
