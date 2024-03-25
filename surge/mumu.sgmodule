@@ -8,6 +8,7 @@
 
 URL-REGEX,^https:\/\/sentry\.netease\.com\/api\/\d+\/envelope,REJECT
 URL-REGEX,^https:\/\/shence-api\.mumu\.163\.com\/sa,REJECT
+URL-REGEX,^https:\/\/shence\.netease\.com\/sa,REJECT
 
 [Script]
 
@@ -16,4 +17,4 @@ URL-REGEX,^https:\/\/shence-api\.mumu\.163\.com\/sa,REJECT
 重写活动页 = type=http-response,pattern=^https:\/\/mumu\.nie\.netease\.com\/api\/mac\/pro\/appcast\/(force|remind),script-path=https://raw.githubusercontent.com/jianyun8023/SnippetsVault/main/surge/script/mumu.js,requires-body=true
 
 [MITM]
-hostname = %APPEND% api-pro.mumu.163.com,sentry.netease.com,shence-api.mumu.163.com,mumu.nie.netease.com
+hostname = %APPEND% api-pro.mumu.163.com,sentry.netease.com,shence-api.mumu.163.com,mumu.nie.netease.com,shence.netease.com
