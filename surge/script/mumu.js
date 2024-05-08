@@ -1,4 +1,5 @@
 const url = $request.url;
+const headers = $response.headers;
 const isQuanX = typeof $task !== "undefined";
 const isLoon = typeof $loon != "undefined"
 const isSurge = typeof $httpClient != "undefined" && !isLoon
@@ -9,10 +10,9 @@ console.log($response.body)
 let obj = JSON.parse($response.body);
 
 if (url.includes("/api/v1/user/info") || url.includes("api/v1/login/by_mobile")) {
-    // obj.data.current_device.trial_status = 1
     obj.data.current_device.trial_end_at = end_at
-    // obj.data.member_status = 1
-    // obj.data.member_expired_at = end_at
+    obj.data.member_status = 1
+    obj.data.member_expired_at = end_at
 } else if (url.includes("/api/v1/device/current/trial")) {
     obj.data.trial_end_at = end_at
 } else if (url.includes("/api/mac/pro/appcast/remind")) {
@@ -23,10 +23,17 @@ if (url.includes("/api/v1/user/info") || url.includes("api/v1/login/by_mobile"))
     obj.data.free_trial_days = 9999
 } 
 
+//移除所有x前缀的头部，使用for-in遍历
+for (var i in headers) {
+    if (i.indexOf("x-") != -1) {
+        delete headers[i];
+    }
+}
+
 if (isQuanX) {
-    $done({ body: JSON.stringify(obj) });
+    $done({ body: JSON.stringify(obj) , headers});
 } else if (isSurge) {
-    $done({ body: JSON.stringify(obj) });
+    $done({ body: JSON.stringify(obj) , headers});
 } else {
-    $done({ body: JSON.stringify(obj) });
+    $done({ body: JSON.stringify(obj) , headers});
 }
