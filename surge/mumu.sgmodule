@@ -14,7 +14,7 @@ URL-REGEX,^https:\/\/shence\.netease\.com\/sa,REJECT
 [Script]
 用户登陆 = type=http-response,pattern=^https:\/\/api-pro\.mumu\.163\.com\/api\/v1\/login\/by_mobile$,script-path=https://raw.githubusercontent.com/jianyun8023/SnippetsVault/main/surge/script/mumu.js,requires-body=true
 用户信息 = type=http-response,pattern=^https:\/\/api-pro\.mumu\.163\.com\/api\/v1\/user\/info(\/s)?$,script-path=https://raw.githubusercontent.com/jianyun8023/SnippetsVault/main/surge/script/mumu.js,requires-body=true
-当前试用 = type=http-response,pattern=^https:\/\/api-pro\.mumu\.163\.com\/api\/v1\/device\/current\/trial$,script-path=https://raw.githubusercontent.com/jianyun8023/SnippetsVault/main/surge/script/mumu.js,requires-body=true
+当前试用 = type=http-response,pattern=^https:\/\/api-pro\.mumu\.163\.com\/api\/v1\/device\/(current\/trial|config)$,script-path=https://raw.githubusercontent.com/jianyun8023/SnippetsVault/main/surge/script/mumu.js,requires-body=true
 重写活动页 = type=http-response,pattern=^https:\/\/mumu\.nie\.netease\.com\/api\/mac\/pro\/appcast\/(force|remind),script-path=https://raw.githubusercontent.com/jianyun8023/SnippetsVault/main/surge/script/mumu.js,requires-body=true
 
 [MITM]
