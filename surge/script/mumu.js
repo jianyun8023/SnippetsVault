@@ -10,9 +10,11 @@ console.log($response.body)
 let obj = JSON.parse($response.body);
 
 if (url.includes("/api/v1/user/info") || url.includes("api/v1/login/by_mobile")) {
-    obj.data.current_device.trial_end_at = end_at
-    obj.data.member_status = 1
-    obj.data.member_expired_at = end_at
+    if (obj.code === 0){
+        obj.data.current_device.trial_end_at = end_at
+        obj.data.member_status = 1
+        obj.data.member_expired_at = end_at
+    }  
 } else if (url.includes("/api/v1/device/current/trial")) {
     obj.data.trial_end_at = end_at
 } else if (url.includes("/api/mac/pro/appcast/remind")) {
