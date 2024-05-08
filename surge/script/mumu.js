@@ -23,17 +23,19 @@ if (url.includes("/api/v1/user/info") || url.includes("api/v1/login/by_mobile"))
     obj.data.free_trial_days = 9999
 } 
 
-//移除所有x前缀的头部，使用for-in遍历
-for (var i in headers) {
-    if (i.indexOf("x-") != -1) {
-        delete headers[i];
+const outHeaders = {};
+//移除所有x前缀的头部
+Object.keys(headers).forEach(function(key){
+    if (!key.startsWith("x")) {
+        outHeaders[key] = headers[key];
     }
-}
+});
+
 
 if (isQuanX) {
-    $done({ body: JSON.stringify(obj) , headers});
+    $done({ body: JSON.stringify(obj) , headers: outHeaders});
 } else if (isSurge) {
-    $done({ body: JSON.stringify(obj) , headers});
+    $done({ body: JSON.stringify(obj) , headers: outHeaders});
 } else {
-    $done({ body: JSON.stringify(obj) , headers});
+    $done({ body: JSON.stringify(obj) , headers: outHeaders});
 }
