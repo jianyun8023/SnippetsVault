@@ -2,7 +2,7 @@
     {
     "bookSourceName": "三优小说网",
     "bookSourceType": 0,
-    "bookSourceUrl": "https://www.3uxiaoshuo.com/",
+    "bookSourceUrl": "https://www.333uu.org",
     "customOrder": 0,
     "enabled": true,
     "enabledCookieJar": true,
@@ -54,7 +54,7 @@
     },
     "searchUrl": "/tag/?key={{key}}",
     "weight": 1,
-    "exploreUrl": "热门小说::https://www.3uxiaoshuo.com/xiaoshuo/2-{{page}}.html\n最新更新::https://www.3uxiaoshuo.com/xiaoshuo/1-{{page}}.html",
+    "exploreUrl": "热门小说::https://www.333uu.org/xiaoshuo/2-{{page}}.html\n最新更新::https://www.333uu.org/xiaoshuo/1-{{page}}.html",
     "bookSourceComment": "优质小说站",
     "bookSourceGroup": "优质"
 }
